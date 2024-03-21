@@ -1,6 +1,6 @@
 #2b -> Script untuk menjalankan tiap menit
-* * * * * /bin/bash /home/helsasp/minute_log.sh
+* * * * * /home/helsasp/minute_log.sh
 
 #2c -> Script untuk menjalankan tiap jam
-0 * * * * /bin/bash /home/helsasp/aggregate_minutes_to_hourly_log.sh
+0 * * * * /home/helsasp/aggregate_minutes_to_hourly_log.sh
 
