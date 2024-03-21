@@ -1,2 +1,2 @@
-4d -> Script untuk menjalankan tiap hari
+#4d -> Script untuk menjalankan tiap hari
 0 0 * * * /bin/bash /home/helsasp/isabel-d.sh
