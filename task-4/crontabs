@@ -1,2 +1,5 @@
+#zipping setiap 1 jam
+0 * * * * /home/liares/isabel.sh
+
 #4d -> Script untuk menjalankan tiap hari
-0 0 * * * /home/helsasp/isabel-d.sh
+0 0 * * * /home/helsasp/isabel.sh
