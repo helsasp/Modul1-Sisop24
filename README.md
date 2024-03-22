@@ -3,7 +3,7 @@
 
 |    NRP     |      Name      |
 | :--------: | :------------: |
-| 5025221000 | Student 1 Name |
+| 5025221270 | Yosua Hares    |
 | 5025221000 | Student 2 Name |
 | 5025221000 | Student 3 Name |
 
