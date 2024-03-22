@@ -1,19 +1,19 @@
 #!/bin/bash
-idx=index
+
 #4a
-current_hour=$(date +"%H")
+curr_jam=$(date +"%H")
 
 get_num_photos() {
     if [ "$1" == "00" ]; then
         echo 10
-    elif [ $((current_hour % 2)) -eq 0 ]; then
+    elif [ $((curr_jam % 2)) -eq 0 ]; then
         echo 5
     else
         echo 3
     fi
 }
 
-num_photos=$(get_num_photos "$current_hour")
+num_photos=$(get_num_photos "$curr_jam")
 
 folder_name="folder_$(date +"%s")"
 
@@ -34,14 +34,13 @@ download_photos "$folder_name" "$num_photos"
 echo "Photos downloaded successfully :)"
 
 #4b
-curr_jam=$(date "+%H")
-if [ "$current_hour" == "00" ]; then
-    zip -r ayang_$idx.zip folder_$idx
+if [ "$curr_jam" == "00" ]; then
+    zip -r "ayang_$num_photos.zip" "$folder_name"
 fi
 
 #4c
-if [ "$current_hour" = "02" ]; then
- rm -rf folder_* ayang_*.zip
+if [ "$curr_jam" == "02" ]; then
+    rm -rf folder_* ayang_*.zip
 fi
 
 #4D
