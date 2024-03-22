@@ -1,5 +1,14 @@
 #!/bin/bash
 
+zipping() {
+    local zip_name="ayang_$1.zip"
+    zip -r "$zip_name" "folder_$1"
+}
+
+del() {
+    rm -rf folder_* ayang_*.zip
+}
+
 #4D
 download_fotonya_levi() {
 local tgl=$(date +"%Y%m%d")
