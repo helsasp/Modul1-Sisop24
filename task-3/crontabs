@@ -4,3 +4,5 @@
 #3c -> Script untuk menjalankan tiap jam
 0 * * * * /home/helsasp/aggregate_minutes_to_hourly_log.sh
 
+#3d -> Zip tiap jam
+0 * * * * /home/helsasp/backup_metrics.sh
