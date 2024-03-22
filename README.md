@@ -5,7 +5,7 @@
 | :--------: | :------------: |
 | 5025221270 | Yosua Hares    |
 | 5025221154 | Helsa Sriprameswari Putri |
-| 5025221000 | Student 3 Name |
+| 5025221000 | M Fadhil Abhista Daniswara |
 
 # Praktikum Modul 1 _(Module 1 Lab Work)_
 
