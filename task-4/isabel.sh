@@ -1,10 +1,16 @@
 #!/bin/bash
+idx=index
 
-zipping() {
-}
+#4b
+curr_jam=$(date "+%H")
+if [ "$current_hour" == "00" ]; then
+    zip -r ayang_$idx.zip folder_$idx
+fi
 
-del() {
-}
+#4c
+if [ "$current_hour" = "02" ]; then
+ rm -rf folder_* ayang_*.zip
+fi
 
 #4D
 download_fotonya_levi() {
