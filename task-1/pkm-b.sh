@@ -1,11 +1,17 @@
 #!/bin/bash
-    
-    
-awk -F '\t' 'NR>1 {
+
+input_file="DataPKM.tsv"
+
+if [ ! -f "$input_file" ]; then
+    echo "File $input_file tidak ditemukan."
+    exit 1
+fi
+
+most_popular_scheme=$(awk -F '\t' 'NR>1 {
     if (NF == 7) {
         count[$7]++;
     }
-  }
+}
 END {
     max = 0;
     popular = "";
@@ -15,5 +21,7 @@ END {
             popular = item;
         }
     }
-    print "Bidang paling banyak diminati oleh mahasiswa: " popular;
-}' DataPKM.tsv
+    print popular;
+}' "$input_file")
+
+echo "Bidang skema paling banyak diminati oleh mahasiswa adalah: $most_popular_scheme"
