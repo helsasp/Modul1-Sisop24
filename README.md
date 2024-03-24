@@ -23,7 +23,7 @@
 
 ### Laporan Resmi Praktikum Modul 1 _(Module 1 Lab Work Report)_
 
-# 1. Task 1 - Tim Kawal Bubu (Bubu's Monitoring Team)
+### 1. Task 1 - Tim Kawal Bubu (Bubu's Monitoring Team)
    A. Karena Belmawa menetapkan judul maksimum proposal 20 kata, maka komandan ingin mencari data siapa saja tim yang tidak memenuhi ketentuan ini. Tampilkan nama pengusul, beserta departemennya yang judulnya lebih dari 20 kata. Pisahkan spasi dan hapus underscore "_" pada nama pengusul.
    Penyelesaian :
    
