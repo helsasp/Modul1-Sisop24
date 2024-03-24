@@ -170,25 +170,11 @@ wget -O "eren_${tgl}.jpg" "https://kincir.com/movie/anime/attack-on-titan-alasan
  fi
 ```
 Penjelasan : <br>
-1.``` download_fotonya_levi() {
-local tgl=$(date +"%Y%m%d")
-wget -O "levi_${tgl}.jpg" "https://kincir.com/movie/anime/attack-on-titan-alasan-eren-jadi-villain-v3owrltqlaip/"
-}c : Fungsi untuk mendownload gambar levi dengan "wget" dan menamai file menjadi levi_YYYYMMDD <br>
-2.```download_fotonya_eren() {
-local tgl=$(date +"%Y%m%d")
-wget -O "eren_${tgl}.jpg" "https://kincir.com/movie/anime/attack-on-titan-alasan-eren-jadi-villain-v3owrltqlaip/"
-}``` : Fungsi untuk mendownload gambar eren dengan "wget" dan menamai file menjadi eren_YYYYMMDD <br>
+1.```download_fotonya_levi() {local tgl=$(date +"%Y%m%d") wget -O "levi_${tgl}.jpg" "https://kincir.com/movie/anime/attack-on-titan-alasan-eren-jadi-villain-v3owrltqlaip/"}``` : Fungsi untuk mendownload gambar levi dengan "wget" dan menamai file menjadi levi_YYYYMMDD <br>
+2.```download_fotonya_eren() {local tgl=$(date +"%Y%m%d") wget -O "eren_${tgl}.jpg" "https://kincir.com/movie/anime/attack-on-titan-alasan-eren-jadi-villain-v3owrltqlaip/"}``` : Fungsi untuk mendownload gambar eren dengan "wget" dan menamai file menjadi eren_YYYYMMDD <br>
 3. ```tanggal_skg=$(date +"%j" | sed 's/^0*//')``` : mengambil hari dalam tahun. Ini mengembalikan nilai yang berkisar dari 001 hingga 366, yang mewakili hari saat ini dalam tahun. <br>
-4.```if [ $tanggal_skg -ge 1 ] && [ $tanggal_skg -le 365 ]; then
-  if [ $((10#$tanggal_skg % 2)) -eq 0 ]; then
-     download_fotonya_levi
-  else
-     download_fotonya_eren
-   fi``` : Fungsi ini mengecek apakah tanggal valid (1-365). Jika valid, maka akan menghitung tanggalnya genap / ganjil. Jika tanggal adalah genap, maka akan masuk ke fungsi download_fotonya_levi untuk mendownload foto levi. Jika tanggal adalah ganjil, maka akan masuk ke fungsi download_fotonya_eren untuk mendownload foto eren. <br>
-5. ```else
-     echo "Tanggalnya salah!" >&2
-       exit 1
- fi``` : Jika tanggal tidak valid, maka akan mengoutputkan "Tanggalnya salah". <br>
+4.```if [ $tanggal_skg -ge 1 ] && [ $tanggal_skg -le 365 ]; then if [ $((10#$tanggal_skg % 2)) -eq 0 ]; then download_fotonya_levi else download_fotonya_eren fi``` : Fungsi ini mengecek apakah tanggal valid (1-365). Jika valid, maka akan menghitung tanggalnya genap / ganjil. Jika tanggal adalah genap, maka akan masuk ke fungsi download_fotonya_levi untuk mendownload foto levi. Jika tanggal adalah ganjil, maka akan masuk ke fungsi download_fotonya_eren untuk mendownload foto eren. <br>
+5. ```else echo "Tanggalnya salah!" >&2 exit 1 fi``` : Jika tanggal tidak valid, maka akan mengoutputkan "Tanggalnya salah". <br>
    
 
 
