@@ -64,6 +64,59 @@ awk -F'\t' 'NR > 1 && NF {
 #### Hasil :
 #### Kendala :
 
+### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
+A.  a. Yuan ingin membuat file bash login bernama yu_login.sh untuk memastikan bahwa peserta yang telah ada di dalam file .csv tersebut, dapat langsung melakukan login, tanpa perlu register. Apabila loginnya sukses, maka akan masuk ke log.txt erikut format untuk login:
+    Memasukkan username. Username didapatkan dari kata pertama pada kolom nama_pengusul<br>
+    Memasukkan password. Password didapatkan dari fakultas+nipd_dosen_pendamping<br>
+    Misal: FTEIC0030016403<br>
+    Setiap percobaan login akan tercatat pada log.txt dengan format YY/MM/DD hh:mm:ss MESSAGE<br>
+    Dengan MESSAGE berupa:<br>
+    LOGIN: SUCCESS USER_NAME is logged in<br>
+    Atau<br>
+    Or<br>
+    LOGIN: ERROR Failed login attempt on USER_NAME<br>
+
+#### Penyelesaian :
+Membuat dan menjalankan file yu_login.sh dengan cara :<br>
+```nano yu_login.sh```
+```chmod +x yu_login.sh```
+```./yu_login.sh```
+
+Input :
+```#!/bin/bash
+
+waktuLogin=$(date +%y/%m/%d\ %H:%M:%S)
+bisalogin=0
+
+read -p "Masukkan Username -> " uname
+read -p "Masukkan Password -> " pw
+
+while IFS=',' read -r No Nama_Pengusul Departemen Fakultas Judul Pendamping Skema; do
+
+ nama_pertama=$(echo "$Nama_Pengusul" | cut -d'_' -f1) #Pisahkan dari underscore
+  if [[ "$nama_pertama" == "$uname" ]]; then
+  nipDosen=$(echo "$Pendamping" | grep -Eo '[0-9]{10}')
+
+    if [[ "$pw" == "$Fakultas$nipDosen" ]]; then
+    bisalogin=1 #Sukses
+      break
+    fi
+  fi
+done < data-pkm.csv
+
+if [[ $bisalogin == 1 ]]; then
+ echo "Login berhasil!"
+ echo "$waktuLogin LOGIN: SUCCESS $uname is logged in" >> log.txt
+else
+
+ echo "Login salah."
+ echo "$waktuLogin LOGIN: ERROR Failed login attempt on $uname" >> log.txt
+fi```
+
+#### Hasil :
+#### Kendala :
+
+
 
 
    
