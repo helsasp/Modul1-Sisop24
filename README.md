@@ -34,8 +34,9 @@
 ```
 chmod +x pkm-a.sh
 ```
-```./pkm-a.sh
-   ```
+```
+./pkm-a.sh
+```
    
    Input :<br>
    ```
