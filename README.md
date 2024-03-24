@@ -29,9 +29,13 @@
    
    Membuat dan menjalankan file pkm-a.sh dengan cara :<br>
    ```
-   nano pkm-a.sh<br>
-   chmod +x pkm-a.sh<br>
-   ./pkm-a.sh<br>
+   nano pkm-a.sh
+```
+```
+   chmod +x pkm-a.sh
+   ```
+```
+   ./pkm-a.sh
    ```
    
    Input :<br>
