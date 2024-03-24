@@ -55,7 +55,8 @@ awk -F'\t' 'NR > 1 && NF {
 }' DataPKM.tsv
 ```
    Penjelasan :<br>
-   1. ```awk -F'\t' 'NR > 1 && N
-      ``` berfungsi 
+   1. ```
+   awk -F'\t' 'NR > 1 && N
+   ``` berfungsi 
    
    
