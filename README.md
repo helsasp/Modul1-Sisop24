@@ -26,7 +26,12 @@
 ### 1. Task 1 - Tim Kawal Bubu (Bubu's Monitoring Team)
    A. Karena Belmawa menetapkan judul maksimum proposal 20 kata, maka komandan ingin mencari data siapa saja tim yang tidak memenuhi ketentuan ini. Tampilkan nama pengusul, beserta departemennya yang judulnya lebih dari 20 kata. Pisahkan spasi dan hapus underscore "_" pada nama pengusul.
    #### Penyelesaian :
-   
+   Membuat dan menjalankan file pkm-a.sh dengan cara :
+   nano pkm-a.sh
+   chmod +x pkm-a.sh
+   ./pkm-a.sh
+
+   Isi file pkm-a.sh :
    #!/bin/bash
 
 awk -F'\t' 'NR > 1 && NF {
@@ -41,5 +46,7 @@ awk -F'\t' 'NR > 1 && NF {
 
 }' DataPKM.tsv
 
+   Penjelasan Kode :
+   1. 
    
    
