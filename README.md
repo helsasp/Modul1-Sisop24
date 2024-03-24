@@ -23,6 +23,23 @@
 
 ### Laporan Resmi Praktikum Modul 1 _(Module 1 Lab Work Report)_
 
-Tulis laporan resmi di sini!
+# 1. Task 1 - Tim Kawal Bubu (Bubu's Monitoring Team)
+   A. Karena Belmawa menetapkan judul maksimum proposal 20 kata, maka komandan ingin mencari data siapa saja tim yang tidak memenuhi ketentuan ini. Tampilkan nama pengusul, beserta departemennya yang judulnya lebih dari 20 kata. Pisahkan spasi dan hapus underscore "_" pada nama pengusul.
+   Penyelesaian :
+   
+   #!/bin/bash
 
-_Write your lab work report here!_
+awk -F'\t' 'NR > 1 && NF {
+
+ gsub("_", " ", $2)
+
+ jumlah_kata_judul = split($5, words, " ")
+
+ if (jumlah_kata_judul > 20) {
+ printf "Nama : %s | Departemen : %s\n", $2, $3
+    }
+
+}' DataPKM.tsv
+
+   
+   
