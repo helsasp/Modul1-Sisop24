@@ -78,12 +78,19 @@ A.  a. Yuan ingin membuat file bash login bernama yu_login.sh untuk memastikan b
 
 #### Penyelesaian :
 Membuat dan menjalankan file yu_login.sh dengan cara :<br>
-```nano yu_login.sh```
-```chmod +x yu_login.sh```
-```./yu_login.sh```
+```
+nano yu_login.sh
+```
+```
+chmod +x yu_login.sh
+```
+```
+./yu_login.sh
+```
 
 Input :
-```#!/bin/bash
+```
+#!/bin/bash
 
 waktuLogin=$(date +%y/%m/%d\ %H:%M:%S)
 bisalogin=0
@@ -111,10 +118,16 @@ else
 
  echo "Login salah."
  echo "$waktuLogin LOGIN: ERROR Failed login attempt on $uname" >> log.txt
-fi```
+fi
+```
+
+Penjelasan : 
+1.```waktuLogin=$(date +%y/%m/%d\ %H:%M:%S)
+bisalogin=0```
 
 #### Hasil :
-#### Kendala :
+#### Kendala : 
+Pada nomor 2A terdapat beberapa kata yang masih tidak bisa login padahal username dan password sudah benar.
 
 
 
