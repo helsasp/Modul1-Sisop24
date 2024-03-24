@@ -27,11 +27,11 @@
    A. Karena Belmawa menetapkan judul maksimum proposal 20 kata, maka komandan ingin mencari data siapa saja tim yang tidak memenuhi ketentuan ini. Tampilkan nama pengusul, beserta departemennya yang judulnya lebih dari 20 kata. Pisahkan spasi dan hapus underscore "_" pada nama pengusul.
    #### Penyelesaian :
    Membuat dan menjalankan file pkm-a.sh dengan cara :<br>
-   nano pkm-a.sh_
-   chmod +x pkm-a.sh
-   ./pkm-a.sh
+   nano pkm-a.sh<br>
+   chmod +x pkm-a.sh<br>
+   ./pkm-a.sh<br>
 
-   Isi file pkm-a.sh :
+   Isi file pkm-a.sh :<br>
    #!/bin/bash
 
 awk -F'\t' 'NR > 1 && NF {
