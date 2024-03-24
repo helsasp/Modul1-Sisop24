@@ -121,8 +121,8 @@ else
 fi
 ```
 
-Penjelasan : 
-1.```waktuLogin=$(date +%y/%m/%d\ %H:%M:%S)<br>
+Penjelasan : <br>
+1.```waktuLogin=$(date +%y/%m/%d\ %H:%M:%S)
 bisalogin=0``` : menginisialisasi waktu login dan variable bisalogin diset 0.<br>
 2. ```read -p "Masukkan Username -> " uname<br>
 read -p "Masukkan Password -> " pw``` : memasukkan username dan password user dan menyimpan inputannya.<br>
