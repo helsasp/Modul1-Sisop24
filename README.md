@@ -28,12 +28,14 @@
    #### Penyelesaian :
    
    Membuat dan menjalankan file pkm-a.sh dengan cara :<br>
+   ```
    nano pkm-a.sh<br>
    chmod +x pkm-a.sh<br>
    ./pkm-a.sh<br>
+   ```
    
    Input :<br>
-   '''
+   ```
    #!/bin/bash
 
 awk -F'\t' 'NR > 1 && NF {
@@ -47,7 +49,7 @@ awk -F'\t' 'NR > 1 && NF {
     }
 
 }' DataPKM.tsv
-'''
+```
    Penjelasan :<br>
    1. 
    
