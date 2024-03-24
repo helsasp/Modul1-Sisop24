@@ -59,7 +59,12 @@ awk -F'\t' 'NR > 1 && NF {
 2. ```gsub("_", " ", $2)``` : mengganti semua underscore (_) dalam kolom kedua (nama pengusul atau $2) dengan spasi.
 3. ```jumlah_kata_judul = split($5, words, " ")``` : menghitung jumlah kata dalam kolom kelima ($5) yang dipisahkan oleh spasi
 4. ```if (jumlah_kata_judul > 20) { printf "Nama : %s | Departemen : %s\n", $2, $3}``` : mencetak nama (kolom kedua) dan departemen (kolom ketiga) jika jumlah kata dalam judul lebih dari 20.
-5. '```DataPKM.tsv``` :  nama file tsv yang diproses oleh skrip
+5. ```DataPKM.tsv``` :  nama file tsv yang diproses oleh skrip
+
+   #### Hasil :
+   #### Kendala :
+
+
 
    
    
