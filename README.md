@@ -61,8 +61,8 @@ awk -F'\t' 'NR > 1 && NF {
 4. ```if (jumlah_kata_judul > 20) { printf "Nama : %s | Departemen : %s\n", $2, $3}``` : mencetak nama (kolom kedua) dan departemen (kolom ketiga) jika jumlah kata dalam judul lebih dari 20.
 5. ```DataPKM.tsv``` :  nama file tsv yang diproses oleh skrip
 
-   #### Hasil :
-   #### Kendala :
+#### Hasil :
+#### Kendala :
 
 
 
