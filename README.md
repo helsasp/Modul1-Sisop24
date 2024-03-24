@@ -65,7 +65,7 @@ awk -F'\t' 'NR > 1 && NF {
 #### Kendala :
 
 ### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
-A.  a. Yuan ingin membuat file bash login bernama yu_login.sh untuk memastikan bahwa peserta yang telah ada di dalam file .csv tersebut, dapat langsung melakukan login, tanpa perlu register. Apabila loginnya sukses, maka akan masuk ke log.txt erikut format untuk login:
+A. Yuan ingin membuat file bash login bernama yu_login.sh untuk memastikan bahwa peserta yang telah ada di dalam file .csv tersebut, dapat langsung melakukan login, tanpa perlu register. Apabila loginnya sukses, maka akan masuk ke log.txt erikut format untuk login:
     Memasukkan username. Username didapatkan dari kata pertama pada kolom nama_pengusul<br>
     Memasukkan password. Password didapatkan dari fakultas+nipd_dosen_pendamping<br>
     Misal: FTEIC0030016403<br>
