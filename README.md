@@ -31,8 +31,9 @@
    ```
    nano pkm-a.sh
 ```
-``` chmod +x pkm-a.sh
-   ```
+```
+chmod +x pkm-a.sh
+```
 ```./pkm-a.sh
    ```
    
