@@ -334,7 +334,18 @@ echo "average,$avg_mem_total,$avg_mem_used,$avg_mem_free,$avg_mem_shared,$avg_me
 chmod 400 "$aggregation_hourly"
 
 ```
+Penjelasan : 
 
+1.```waktu=$(date +"%Y%m%d%H")```:Menyimpan timestamp saat ini dalam format YMDH. <br>
+2.```log_folder="/home/$USER/metrics"```: Mnyimpan jalur folder di mana file log akan disimpan. $USER adalah variabel berisi nama pengguna saat ini.<br>
+3.```aggregation_hourly="${log_folder}/metrics_agg_${waktu}.log"```: Menyimpan jalur file log hasil aggregasi.<br>
+4.```minute_logfile=$(find "$log_folder" -name "metrics_${waktu}*.log")```: Menyimpan daftar file log per menit yang akan dianalisis.<br>
+5.```declare -a sumMemTotal=(), dan seterusnya ```: Mendeklarasikan array untuk menyimpan data yang akan dihitung nanti.<br>
+6.``` findMax() {max=$(printf '%d\n' "${@}" | sort -rn | head -n 1)echo "$max"}``` : Fungsi untuk mencari nilai maksimum dari sebuah array dengan disortir secara numerik (-n) dalam urutan menurun (-r), sehingga nilai terbesar akan berada di atas.Output dari perintah sort tersebut kemudian dipiping ke perintah head untuk mengambil hanya baris pertama, yang berisi nilai maksimum<br>
+7. ```findMin() {min=$(printf '%d\n' "${@}" | sort -n | head -n 1)echo "$min"} ```: Fungsi untuk menemukan nilai minimum dari sebuah array dengan diurutkan secara numerik (-n), sehingga nilai minimum akan berada di bagian atas.Output dari perintah sort tersebut kemudian dipiping ke perintah head untuk mengambil hanya baris pertama, yang berisi nilai minimum.<br>
+8.
+
+BENTAR BLM SELSE TINGGAL 3C,D HEHEHE <br>
 
 
 #### Hasil :
