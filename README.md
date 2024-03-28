@@ -144,6 +144,42 @@ A.<br>
 #### Kendala : 
 Pada nomor 2A terdapat beberapa kata yang masih tidak bisa login padahal username dan password sudah benar.<br>
 
+C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:
+File users.txt akan diupdate setiap 1 jam sekali
+Simpan konfigurasi cron pada file crontabs
+
+#### Penyelesaian :
+Membuat file yu_database.sh dan input scriptnya dengan cara:<br>
+```
+nano yu_database.sh
+```
+ganti akses agar bisa di run
+```
+chmod +x yu_database.sh
+```
+kemudian jalankan scriptnya dengan:
+```
+./yu_database.sh
+```
+Untuk pengaturan crontabs dengan cara :<br>
+```
+crontabs -e
+```
+Input : <br>
+```
+#!/bin/bash
+
+while IFS=',' read -r No Nama_Pengusul Departemen Fakultas Judul Pendamping Skema
+do
+    usrnme="$Nama_Pengusul"
+
+    temp=$(echo "$Pendamping" | grep -o '[0-9]*')
+    pass="$Fakultas$temp"
+
+    echo "$usrnme:$pass" >> users.txt
+done < /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/resources/data-pkm.csv
+```
+
 ### 3. Task 3 - Magang Bubu (Bubu's Internship)
 A. Masukkan semua metrics ke dalam suatu file log bernama metrics_{YmdHms}.log. {YmdHms} adalah waktu disaat file script bash kalian dijalankan. Misal dijalankan pada 2024-03-30 15:00:00, maka file log yang akan tergenerate adalah metrics_20240330150000.log.<br>
  #### Penyelesaian :
