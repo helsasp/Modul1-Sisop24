@@ -62,6 +62,8 @@ awk -F'\t' 'NR > 1 && NF {
 5. ```DataPKM.tsv``` :  nama file tsv yang diproses oleh skrip
 
 #### Hasil :
+A. <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30)
 #### Kendala :
 
 ### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
