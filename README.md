@@ -209,7 +209,7 @@ C.Kemudian, buat satu script untuk membuat aggregasi file log ke satuan jam. Scr
 #### Penyelesaian :
 Membuat dan menjalankan file aggregate_minutes_to_hourly_log.sh dengan cara :<br>
 ```
-nano aaggregate_minutes_to_hourly_log.sh
+nano aggregate_minutes_to_hourly_log.sh
 ```
 ```
 chmod +x aggregate_minutes_to_hourly_log.sh
