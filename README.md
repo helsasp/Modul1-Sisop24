@@ -343,22 +343,15 @@ Penjelasan :
 5.```declare -a sumMemTotal=(), dan seterusnya ```: Mendeklarasikan array untuk menyimpan data yang akan dihitung nanti.<br>
 6.``` findMax() {max=$(printf '%d\n' "${@}" | sort -rn | head -n 1)echo "$max"}``` : Fungsi untuk mencari nilai maksimum dari sebuah array dengan disortir secara numerik (-n) dalam urutan menurun (-r), sehingga nilai terbesar akan berada di atas.Output dari perintah sort tersebut kemudian dipiping ke perintah head untuk mengambil hanya baris pertama, yang berisi nilai maksimum<br>
 7. ```findMin() {min=$(printf '%d\n' "${@}" | sort -n | head -n 1)echo "$min"} ```: Fungsi untuk menemukan nilai minimum dari sebuah array dengan diurutkan secara numerik (-n), sehingga nilai minimum akan berada di bagian atas.Output dari perintah sort tersebut kemudian dipiping ke perintah head untuk mengambil hanya baris pertama, yang berisi nilai minimum.<br>
-8. ```findAVG() 
-{jumlahData=0  
-banyakData=0
-for value in "$@"; do
-    jumlahData=$(echo "$jumlahData + $value" | bc)
-    ((banyakData++))
-  done
-  
-  average=$(echo "scale=1; $jumlahData / $banyakData" | bc)
-  if [[ "${average#*.}" == "0" ]]; then
-      echo "${average%.*}" 
-  else
-      echo "$average" # remove .0
-  fi
-} ```
-
+8. ```findAVG() {jumlahData=0  banyakData=0 for value in "$@"; do  jumlahData=$(echo "$jumlahData + $value" | bc)  ((banyakData++)) done average=$(echo "scale=1; $jumlahData / $banyakData" | bc) if [[ "${average#*.}" == "0" ]]; then echo "${average%.*}"  else echo "$average" #remove .0 fi} ``` : Fungsi untuk menghitung rata - rata dengan menghitung jumlah data/angka di array dibagi banyak data. Rata-rata ditulis hingga 1 satuan di belakang koma. Jika rata-rata bilangan penuh maka akan dioutputkan tanpa koma.
+9. ```for log in $minute_logfile; do   IFS=, read -r mem_total mem_used mem_free mem_shared mem_buff mem_available swap_total swap_used swap_free path path_size < <(tail -n 1 "$log")path_size="${path_size//M/}" path_size="${path_size//K/}"path_size="${path_size//B/}" ```: Membaca file log per menit dan untuk path size akan diambil angkanya saja dan meremove sizenya dalam M,K,B. Penggunaan tail -n 1 digunakan untuk mendapatkan baris terakhir dari file log
+10. ```sumMemTotal+=("$mem_total") dan seterusnya ``` : Array untuk menyimpan total semua angka/data yang ada di file log
+11. ```min_mem_total=$(findMin "${sumMemTotal[@]}") dan seterusnya ```: Variable untuk mendapatkan nilai minimum dari masing - masing kategori dengan masuk ke fungsi findMin
+12. ```max_mem_total=$(findMax "${sumMemTotal[@]}") dan seterusnya ```: Variable untuk mendapatkan nilai maksimum dari masing - masing kategori dengan masuk ke fungsi findMax 
+13. ```avg_mem_total=$(findAVG "${sumMemTotal[@]}") dan seterusnya ```: Variable untuk mendapatkan nilai rata - rata dari masing - masing kategori dengan masuk ke fungsi findAVG
+14. ```echo "type,mem_total,mem_used,mem_free,mem_shared,mem_buff,mem_available,swap_total,swap_used,swap_free,path,path_size" > "$aggregation_hourly" ```: Mencetak header pada baris pertama di file aggregation_hourly sesuai format di awal.
+15.echo"minimum,$min_mem_total,$min_mem_used,$min_mem_free,$min_mem_shared,$min_mem_buff,$min_mem_available,$min_swap_total,$min_swap_used,$min_swap_free,/home/$USER,${min_path_size}M" >> "$aggregation_hourly"echo "maximum,$max_mem_total,$max_mem_used,$max_mem_free,$max_mem_shared,$max_mem_buff,$max_mem_available,$max_swap_total,$max_swap_used,$max_swap_free,/home/$USER,${max_path_size}M" >> "$aggregation_hourly"echo "average,$avg_mem_total,$avg_mem_used,$avg_mem_free,$avg_mem_shared,$avg_mem_buff,$avg_mem_available,$avg_swap_total,$avg_swap_used,$avg_swap_free,/home/$USER,${avg_path_size}M" >> "$aggregation_hourly" ```: Mengoutputkan nilai minimum, maksimum, dan rata - rata tiap kategori
+16. ```chmod 400 "$metrics_file"```: Mengatur izin file log yang dibuat sehingga hanya pengguna yang memiliki izin baca saja.<br>
 
 
 #### Hasil :
