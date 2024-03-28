@@ -137,6 +137,9 @@ read -p "Masukkan Password -> " pw``` : memasukkan username dan password user da
 9.```echo "$waktuLogin LOGIN: SUCCESS $uname is logged in" >> log.txt dan echo "$waktuLogin LOGIN: ERROR Failed login attempt on $uname" >> log.txt```: mencatat hasil login ke dalam file log.txt beserta waktu dan status loginnya.<br>
 
 #### Hasil :
+A.
+![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/20de0483-dda3-4e94-93b2-219e270322ae)
+![Screenshot 2024-03-28 163857](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/3fde77f5-425f-427b-b7e6-706ba0eeff54)
 #### Kendala : 
 Pada nomor 2A terdapat beberapa kata yang masih tidak bisa login padahal username dan password sudah benar.<br>
 
@@ -364,6 +367,13 @@ Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap jam tanpa pembatasan
 
 
 #### Hasil :
+A. <br>
+![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/1042329b-5513-4701-8064-17f785444b27)
+B. <br>
+![Screenshot 2024-03-28 164335](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/36317e06-4740-4f24-9143-f763445b279f)
+C. <br>
+![Screenshot 2024-03-28 164501](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/4cf4e39f-7739-4278-b0fa-1440fd8db70f)
+![Screenshot 2024-03-28 164634](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/bd43cdc7-17e3-4a8f-b0ff-b379c5dfaec3)
 #### Kendala : 
 
 
