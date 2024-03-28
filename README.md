@@ -183,54 +183,7 @@ Untuk pengaturan crontab:
 4.```pass="$Fakultas$temp"```Disini tinggal gabungin antara value dari variabel fakultas dan variabel temp(nomor nip pendamping) untuk menjadi pass. Hasilnya akan disimpanke pass.<br>
 5.```echo "$usrnme:$pass" >> users.txt```Sesuai dengan soal, ingin menyimpan semua pass dan usrnme dari data-pkm.csv ke users.txt, maka kita print value dari variable usrnme dan pass ke dalam users.txt<br>
 6.```done < /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/resources/data-pkm.csv``` ini merupakan end loop, dan file yang akan dibaca adalah dari path ./home/.../data-pkm.csv<br>
-7.```0 * * * * /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/task-2/yu_database.sh```Karena soal pengen users.txt diupdate setiap 1 jam sekali, maka script yu_database.sh akan kita run setiap 1 jam sekali dengan cronjob 0**** yang menunjukkan 1 jam sekali.<br>C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:
-File users.txt akan diupdate setiap 1 jam sekali
-Simpan konfigurasi cron pada file crontabs
-
-#### Penyelesaian :
-Membuat file yu_database.sh dan input scriptnya dengan cara:<br>
-```
-nano yu_database.sh
-```
-ganti akses agar bisa di run
-```
-chmod +x yu_database.sh
-```
-kemudian jalankan scriptnya dengan:
-```
-./yu_database.sh
-```
-Untuk pengaturan crontabs dengan cara :<br>
-```
-crontabs -e
-```
-#### Input : <br>
-```
-#!/bin/bash
-
-while IFS=',' read -r No Nama_Pengusul Departemen Fakultas Judul Pendamping Skema
-do
-    usrnme="$Nama_Pengusul"
-
-    temp=$(echo "$Pendamping" | grep -o '[0-9]*')
-    pass="$Fakultas$temp"
-
-    echo "$usrnme:$pass" >> users.txt
-done < /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/resources/data-pkm.csv
-```
-Untuk pengaturan crontab:
-````
-0 * * * * /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/task-2/yu_database.sh
-````
-
-#### Penjelasan:<br>
-1.```while IFS=',' read -r No Nama_Pengusul Departemen Fakultas Judul Pendamping Skema``` loop whlle yang ngebaca data dari file data-pkm.csv dan setiap barisnya dipisah dengan ',', kemudian value dari masing-masing kolom disimpan sesuai 7 variabel sesuai.<br>
-2.```do usrnme="$Nama_Pengusul"```variable usrnme akses value dari variable Nama_Pengusul dengan '$', jadi value dari Nama_Pengusul disimpen ke usrnme<br>
-3.```temp=$(echo "$Pendamping" | grep -o '[0-9]*')```Karena pass ngebutuhin nomor nip doang dari pendamping dan di dalam kolom Pendamping itu gabung ama namanya maka perlu dipisah dengan perintah grep, dimana grep akan hanya mengambil value dari Pendamping yang hanya berupa angka 0-9. Hasilnya akan disimpan ke temp.<br>
-4.```pass="$Fakultas$temp"```Disini tinggal gabungin antara value dari variabel fakultas dan variabel temp(nomor nip pendamping) untuk menjadi pass. Hasilnya akan disimpanke pass.<br>
-5.```echo "$usrnme:$pass" >> users.txt```Sesuai dengan soal, ingin menyimpan semua pass dan usrnme dari data-pkm.csv ke users.txt, maka kita print value dari variable usrnme dan pass ke dalam users.txt<br>
-6.```done < /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/resources/data-pkm.csv``` ini merupakan end loop, dan file yang akan dibaca adalah dari path ./home/.../data-pkm.csv<br>
-7.```0 * * * * /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/task-2/yu_database.sh```Karena soal pengen users.txt diupdate setiap 1 jam sekali, maka script yu_database.sh akan kita run setiap 1 jam sekali dengan cronjob 0**** yang menunjukkan 1 jam sekali.<br>
+7.```0 * * * * /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/task-2/yu_database.sh```Karena soal pengen users.txt diupdate setiap 1 jam sekali, maka script yu_database.sh akan kita run setiap 1 jam sekali dengan cronjob 0**** yang menunjukkan 1 jam sekali.<br>.
 
 #### Hasil :
 A.<br>
