@@ -343,9 +343,22 @@ Penjelasan :
 5.```declare -a sumMemTotal=(), dan seterusnya ```: Mendeklarasikan array untuk menyimpan data yang akan dihitung nanti.<br>
 6.``` findMax() {max=$(printf '%d\n' "${@}" | sort -rn | head -n 1)echo "$max"}``` : Fungsi untuk mencari nilai maksimum dari sebuah array dengan disortir secara numerik (-n) dalam urutan menurun (-r), sehingga nilai terbesar akan berada di atas.Output dari perintah sort tersebut kemudian dipiping ke perintah head untuk mengambil hanya baris pertama, yang berisi nilai maksimum<br>
 7. ```findMin() {min=$(printf '%d\n' "${@}" | sort -n | head -n 1)echo "$min"} ```: Fungsi untuk menemukan nilai minimum dari sebuah array dengan diurutkan secara numerik (-n), sehingga nilai minimum akan berada di bagian atas.Output dari perintah sort tersebut kemudian dipiping ke perintah head untuk mengambil hanya baris pertama, yang berisi nilai minimum.<br>
-8.
+8. ```findAVG() 
+{jumlahData=0  
+banyakData=0
+for value in "$@"; do
+    jumlahData=$(echo "$jumlahData + $value" | bc)
+    ((banyakData++))
+  done
+  
+  average=$(echo "scale=1; $jumlahData / $banyakData" | bc)
+  if [[ "${average#*.}" == "0" ]]; then
+      echo "${average%.*}" 
+  else
+      echo "$average" # remove .0
+  fi
+} ```
 
-BENTAR BLM SELSE TINGGAL 3C,D HEHEHE <br>
 
 
 #### Hasil :
