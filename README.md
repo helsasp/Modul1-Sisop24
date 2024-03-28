@@ -369,7 +369,7 @@ Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap jam tanpa pembatasan
 
 #### Hasil :
 A. <br>
-![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/1042329b-5513-4701-8064-17f785444b27)<br>
+![Screenshot 2024-03-28 164206](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/2e0979b6-db8d-4819-b7da-4750eec145ab)<br>
 B. <br>
 ![Screenshot 2024-03-28 164335](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/36317e06-4740-4f24-9143-f763445b279f)<br>
 C. <br>
