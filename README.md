@@ -136,9 +136,9 @@ read -p "Masukkan Password -> " pw``` : memasukkan username dan password user da
 8.```echo "Login berhasil!" dan echo "Login salah."``` : mencetak pesan ke layar sesuai dengan hasil login.<br>
 9.```echo "$waktuLogin LOGIN: SUCCESS $uname is logged in" >> log.txt dan echo "$waktuLogin LOGIN: ERROR Failed login attempt on $uname" >> log.txt```: mencatat hasil login ke dalam file log.txt beserta waktu dan status loginnya.<br>
 
-C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:
-File users.txt akan diupdate setiap 1 jam sekali
-Simpan konfigurasi cron pada file crontabs
+C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:<br>
+File users.txt akan diupdate setiap 1 jam sekali<br>
+Simpan konfigurasi cron pada file crontabs<br>
 
 #### Penyelesaian :
 Membuat file yu_database.sh dan input scriptnya dengan cara:<br>
@@ -480,6 +480,32 @@ C. <br>
 
 
 ### 4. Task 4 - LDR Isabel (Isabel Sad Relationship)
+B.Karena memory laptop Isabel penuh, maka bantulah Isabel untuk zip foto-foto tersebut dengan ketentuan:<br>
+Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan NOMOR.ZIP adalah urutan folder saat dibuat (ayang_1, ayang_2, dst). Yang di ZIP hanyalah folder dari soal di atas. <br>
+#### Penyelesaian : <br>
+```
+#4b
+if [ "$curr_jam" == "00" ]; then
+    zip -r "ayang_$num_photos.zip" "$folder_name"
+fi
+```
+
+#### Penjelasan :
+1. ```$curr_jam" == "00"``` sesuai dengan penjelasan diatas curr_jam adalah waktu dalam menit ketika script dijalankan. Soal meminta setiap 1 jam maka akan melakukan zipping maka jika curr_jam menunjukkan 00 atau dalam arti menit sudah menujukkan 00 maka sudah kelipatan 1 jam maka condition if akan dijalankan.<br>
+2. ```zip -r "ayang_$num_photos.zip" "$folder_name" fi``` Disini akan melakukan zipping, dimana file yang di zip dari soal diatas dinamai dengan format ayang_index. Dengan index sesuai urutan folder saat dibuat yaitu si num_photos.Kemudian proses if selesai.<br>
+
+C.Ternyata laptop Isabel masih penuh, bantulah dia untuk delete semua folder dan zip setiap hari pada pukul 02.00!
+#### Penyelesaian : <br>
+```
+if [ "$curr_jam" == "02" ]; then
+    rm -rf folder_* ayang_*.zip
+fi
+```
+
+#### Penjelasan : <br>
+1.```$curr_jam" == "02"```karena soal minta untuk delete semua folder dan zip pada pukul 02.00 maka kita cek curr_jam apakah pukul 2.<br>
+2.```rm -rf folder_* ayang_*.zip``` jika iya maka akan di delete semua folder yang nama awalnya sama dengan "folder_" dan menghapus semua file yang dimulai dengan "ayang_" dan berakhiran dengan ".zip".<br>
+
 D. Untuk mengisi laptopnya kembali, Isabel ingin mendownload gambar Levi dan Eren secara bergantian setiap harinya dengan ketentuan nama file:<br>
     Jika Levi, maka nama file nya menjadi levi_YYYYMMDD (Dengan YYYYMMDD adalah tahun, bulan, dan tanggal gambar tersebut di download)<br>
     Jika Eren, maka nama file nya menjadi eren_YYYYMMDD (Dengan YYYYMMDD adalah tahun, bulan, dan tanggal gambar tersebut di download)<br>
