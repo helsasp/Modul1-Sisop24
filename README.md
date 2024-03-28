@@ -200,10 +200,7 @@ crontabs -e
 Input : <br>
 ```* * * * * /home/helsasp/minute_log.sh``` <br>
 Penjelasan : <br>
-Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap menit tanpa pembatasan pada jam, hari dalam bulan, bulan, atau hari dalam minggu.<br>
-Path lengkap ke skrip atau program yang akan dijalankan adalah /home/helsasp/minute_log.sh.<br>
-
-Dengan demikian, skrip minute_log.sh akan dijalankan setiap menit tanpa ada batasan pada waktu, tanggal, atau hari dalam seminggu di dalam direktori /home/helsasp/<br>
+Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap menit tanpa pembatasan pada jam, hari dalam bulan, bulan, atau hari dalam minggu.Path lengkap ke skrip atau program yang akan dijalankan adalah /home/helsasp/minute_log.sh. Dengan demikian, skrip minute_log.sh akan dijalankan setiap menit tanpa ada batasan pada waktu, tanggal, atau hari dalam seminggu di dalam direktori /home/helsasp/<br>
 
 C.Kemudian, buat satu script untuk membuat aggregasi file log ke satuan jam. Script aggregasi akan memiliki info dari file-file yang tergenerate tiap menit. Dalam hasil file aggregasi tersebut, terdapat nilai minimum, maximum, dan rata-rata dari tiap-tiap metrics. File aggregasi akan ditrigger untuk dijalankan setiap jam secara otomatis. Berikut contoh nama file hasil aggregasi metrics_agg_2023033015.log dengan format metrics_agg_{YmdH}.log. <br>
 #### Penyelesaian :
@@ -352,6 +349,16 @@ Penjelasan :
 14. ```echo "type,mem_total,mem_used,mem_free,mem_shared,mem_buff,mem_available,swap_total,swap_used,swap_free,path,path_size" > "$aggregation_hourly" ```: Mencetak header pada baris pertama di file aggregation_hourly sesuai format di awal.<br>
 15.```echo"minimum,$min_mem_total,$min_mem_used,$min_mem_free,$min_mem_shared,$min_mem_buff,$min_mem_available,$min_swap_total,$min_swap_used,$min_swap_free,/home/$USER,${min_path_size}M" >> "$aggregation_hourly"echo "maximum,$max_mem_total,$max_mem_used,$max_mem_free,$max_mem_shared,$max_mem_buff,$max_mem_available,$max_swap_total,$max_swap_used,$max_swap_free,/home/$USER,${max_path_size}M" >> "$aggregation_hourly"echo "average,$avg_mem_total,$avg_mem_used,$avg_mem_free,$avg_mem_shared,$avg_mem_buff,$avg_mem_available,$avg_swap_total,$avg_swap_used,$avg_swap_free,/home/$USER,${avg_path_size}M" >> "$aggregation_hourly" ```: Mengoutputkan nilai minimum, maksimum, dan rata - rata tiap kategori<br>
 16. ```chmod 400 "$metrics_file"```: Mengatur izin file log yang dibuat sehingga hanya pengguna yang memiliki izin baca saja.<br>
+
+Untuk menjalankan otomatis setiap jam, digunakan Crontabs. <br>
+Mmebuka crontabs dengan cara :<br>
+```
+crontabs -e
+```
+Input : <br>
+```0 * * * * /home/helsasp/aggregate_minutes_to_hourly_log.sh``` <br>
+Penjelasan : <br>
+Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap jam tanpa pembatasan hari dalam bulan, bulan, atau hari dalam minggu.Path lengkap ke skrip atau program yang akan dijalankan adalah /home/helsasp/aggregate_minutes_to_hourly_log.sh. Dengan demikian, skrip aggregate_minutes_to_hourly_log.sh akan dijalankan setiap jam tanpa ada batasan pada waktu, tanggal, atau hari dalam seminggu di dalam direktori /home/helsasp/<br>
 
 
 #### Hasil :
