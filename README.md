@@ -139,6 +139,7 @@ read -p "Masukkan Password -> " pw``` : memasukkan username dan password user da
 #### Hasil :
 A.
 ![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/20de0483-dda3-4e94-93b2-219e270322ae)<br>
+<br>
 ![Screenshot 2024-03-28 163857](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/3fde77f5-425f-427b-b7e6-706ba0eeff54)<br>
 #### Kendala : 
 Pada nomor 2A terdapat beberapa kata yang masih tidak bisa login padahal username dan password sudah benar.<br>
@@ -373,6 +374,7 @@ B. <br>
 ![Screenshot 2024-03-28 164335](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/36317e06-4740-4f24-9143-f763445b279f)<br>
 C. <br>
 ![Screenshot 2024-03-28 164501](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/4cf4e39f-7739-4278-b0fa-1440fd8db70f)<br>
+<br>
 ![Screenshot 2024-03-28 164634](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/bd43cdc7-17e3-4a8f-b0ff-b379c5dfaec3)<br>
 #### Kendala : 
 
