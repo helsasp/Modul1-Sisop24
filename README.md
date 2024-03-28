@@ -63,7 +63,7 @@ awk -F'\t' 'NR > 1 && NF {
 
 #### Hasil :
 A. <br>
-![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30)
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30) <br>
 #### Kendala :
 
 ### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
@@ -138,8 +138,8 @@ read -p "Masukkan Password -> " pw``` : memasukkan username dan password user da
 
 #### Hasil :
 A.
-![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/20de0483-dda3-4e94-93b2-219e270322ae)
-![Screenshot 2024-03-28 163857](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/3fde77f5-425f-427b-b7e6-706ba0eeff54)
+![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/20de0483-dda3-4e94-93b2-219e270322ae)<br>
+![Screenshot 2024-03-28 163857](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/3fde77f5-425f-427b-b7e6-706ba0eeff54)<br>
 #### Kendala : 
 Pada nomor 2A terdapat beberapa kata yang masih tidak bisa login padahal username dan password sudah benar.<br>
 
@@ -368,12 +368,12 @@ Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap jam tanpa pembatasan
 
 #### Hasil :
 A. <br>
-![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/1042329b-5513-4701-8064-17f785444b27)
+![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/1042329b-5513-4701-8064-17f785444b27)<br>
 B. <br>
-![Screenshot 2024-03-28 164335](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/36317e06-4740-4f24-9143-f763445b279f)
+![Screenshot 2024-03-28 164335](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/36317e06-4740-4f24-9143-f763445b279f)<br>
 C. <br>
-![Screenshot 2024-03-28 164501](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/4cf4e39f-7739-4278-b0fa-1440fd8db70f)
-![Screenshot 2024-03-28 164634](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/bd43cdc7-17e3-4a8f-b0ff-b379c5dfaec3)
+![Screenshot 2024-03-28 164501](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/4cf4e39f-7739-4278-b0fa-1440fd8db70f)<br>
+![Screenshot 2024-03-28 164634](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/bd43cdc7-17e3-4a8f-b0ff-b379c5dfaec3)<br>
 #### Kendala : 
 
 
@@ -413,6 +413,14 @@ Penjelasan : <br>
 3. ```tanggal_skg=$(date +"%j" | sed 's/^0*//')``` : mengambil hari dalam tahun. Ini mengembalikan nilai yang berkisar dari 001 hingga 366, yang mewakili hari saat ini dalam tahun. <br>
 4.```if [ $tanggal_skg -ge 1 ] && [ $tanggal_skg -le 365 ]; then if [ $((10#$tanggal_skg % 2)) -eq 0 ]; then download_fotonya_levi else download_fotonya_eren fi``` : Fungsi ini mengecek apakah tanggal valid (1-365). Jika valid, maka akan menghitung tanggalnya genap / ganjil. Jika tanggal adalah genap, maka akan masuk ke fungsi download_fotonya_levi untuk mendownload foto levi. Jika tanggal adalah ganjil, maka akan masuk ke fungsi download_fotonya_eren untuk mendownload foto eren. <br>
 5. ```else echo "Tanggalnya salah!" >&2 exit 1 fi``` : Jika tanggal tidak valid, maka akan mengoutputkan "Tanggalnya salah". <br>
+
+
+#### Hasil :
+
+D. <br>
+![Screenshot 2024-03-28 165145](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/2f4236cd-b88f-4bea-a702-ff7cffd00b01) <br>
+
+#### Kendala :
    
 
 
