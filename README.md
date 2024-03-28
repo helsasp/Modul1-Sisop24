@@ -179,6 +179,9 @@ do
     echo "$usrnme:$pass" >> users.txt
 done < /home/liares/Documents/sisop/pratikum1/praktikum-modul-1-d21/resources/data-pkm.csv
 ```
+#### Penjelasan:<br>
+1.```while IFS=',' read -r No Nama_Pengusul Departemen Fakultas Judul Pendamping Skema```
+
 
 ### 3. Task 3 - Magang Bubu (Bubu's Internship)
 A. Masukkan semua metrics ke dalam suatu file log bernama metrics_{YmdHms}.log. {YmdHms} adalah waktu disaat file script bash kalian dijalankan. Misal dijalankan pada 2024-03-30 15:00:00, maka file log yang akan tergenerate adalah metrics_20240330150000.log.<br>
