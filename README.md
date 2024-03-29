@@ -499,9 +499,6 @@ Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan N
 C.Ternyata laptop Isabel masih penuh, bantulah dia untuk delete semua folder dan zip setiap hari pada pukul 02.00!
 #### Penyelesaian : <br>
 ```
-if [ "$((curr_hour % 1)) -eq 0 ]; then
-    rm -rf folder_* ayang_*.zip
-fi
 ```
 
 #### Penjelasan : <br>
