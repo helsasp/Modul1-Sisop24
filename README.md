@@ -416,6 +416,55 @@ Input : <br>
 Penjelasan : <br>
 Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap jam tanpa pembatasan hari dalam bulan, bulan, atau hari dalam minggu.Path lengkap ke skrip atau program yang akan dijalankan adalah /home/helsasp/aggregate_minutes_to_hourly_log.sh. Dengan demikian, skrip aggregate_minutes_to_hourly_log.sh akan dijalankan setiap jam tanpa ada batasan pada waktu, tanggal, atau hari dalam seminggu di dalam direktori /home/helsasp/<br>
 
+D. Selanjutnya agar lebih menghemat penyimpan, buatlah script backup_metrics.sh. Dimana script ini akan menyimpan semua log metrics aggregasi mulai dari pukul 00:00 sampai 23:59 didalam 1 file .gz menggunakan gunzip. Contoh nama file hasil zip backup_metrics_{date_YmdH}.gz <br>
+
+#### Penyelesaian :
+Membuat dan menjalankan file backup_metrics.sh dengan cara :<br>
+```
+nano backup_metrics.sh
+```
+```
+chmod +x backup_metrics.sh
+```
+```
+./backup_metrics.sh
+```
+Input : <br>
+```
+#!/bin/bash
+
+logFolder="/home/$USER/metrics"
+backupFile="/home/$USER"
+day=$(date +"%Y%m%d")
+hour=$(date +"%H")
+
+cd "$logFolder" || exit
+
+tar -cf "$backupFile/backup_metrics_${day}${hour}.tar" metrics_agg_"${day}"*.log
+gzip -f "$backupFile/backup_metrics_${day}${hour}.tar"
+
+mv "$backupFile/backup_metrics_${day}${hour}.tar.gz" "$backupFile/backup_metrics_${day}${hour}.gz"
+```
+Penjelasan :<br>
+1. ```logFolder="/home/$USER/metrics"``` : menyimpan path ke folder di mana file log metrik berada. <br>
+2. ```backupFile="/home/$USER"``` : menyimpan path ke folder tempat backup akan disimpan.<br>
+3. ```day=$(date +"%Y%m%d")``` : menyimpan tanggal saat ini dalam format tahun-bulan-tanggal<br>
+4. ```hour=$(date +"%H") ```: menyimpan jam saat ini dalam format 24 jam<br>
+5. ```cd "$logFolder" || exit``` : berpindah ke direktori $logFolder atau keluar dari skrip jika tidak dapat.<br>
+6. ```tar -cf "$backupFile/backup_metrics_${day}${hour}.tar" metrics_agg_"${day}"*.log ```: membuat sebuah file tar yang berisi semua file log metrik yang sesuai dengan pola metrics_agg_${day}*.log<br>
+7. ```gzip -f "$backupFile/backup_metrics_${day}${hour}.tar ```: mengompresi file tar yang dibuat sebelumnya ke dalam format gzip (-f untuk memaksa kompresi)<br>
+8. ```mv "$backupFile/backup_metrics_${day}${hour}.tar.gz" "$backupFile/backup_metrics_${day}${hour}.gz"```: Ini mengganti nama file terkompresi dari .tar.gz menjadi .gz.<br>
+
+Untuk menjalankan otomatis setiap jam, digunakan Crontabs. <br>
+Membuka crontabs dengan cara :<br>
+```
+crontabs -e
+```
+Input : <br>
+```0 * * * * /home/helsasp/backup_metrics.sh``` <br>
+Penjelasan : <br>
+Jadwal eksekusi tugas diatur untuk menjalankan skrip setiap jam tanpa pembatasan hari dalam bulan, bulan, atau hari dalam minggu.Path lengkap ke skrip atau program yang akan dijalankan adalah /home/helsasp/backup_metrics.sh. Dengan demikian, skrip backup_metrics.sh akan dijalankan setiap jam tanpa ada batasan pada waktu, tanggal, atau hari dalam seminggu di dalam direktori /home/helsasp/<br>
+
 E.Karena file log bersifat sensitif pastikan semua file log hanya dapat dibaca oleh user pemilik file.
 #### Penyelesaian:
 Terdapat 2 log pada soal nomor 3, yaitu log yang terbentuk dari minute_log.sh, dan log yang terbentuk dari aggregate_minutes_to_hourly_log.sh. Oleh karena itu pada minute_log.sh seperti pada script di atas sudah ditambahkan chmod 400 "$metrics_file" dan pada aggregate_minutes_to_hourly_log.sh sudah ditambahkan chmod 400 "$aggregation_hourly".
@@ -429,7 +478,12 @@ C. <br>
 ![Screenshot 2024-03-28 164501](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/4cf4e39f-7739-4278-b0fa-1440fd8db70f)<br>
 <br>
 ![Screenshot 2024-03-28 164634](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/bd43cdc7-17e3-4a8f-b0ff-b379c5dfaec3)<br>
+D. <br>
+![Screenshot 2024-03-29 133155](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/49a340e2-d1ae-424e-b809-23764b173c6d)
+
+
 #### Kendala : 
+Pada no 3D awalnya tidak bisa mengompress beberapa file menjadi 1, namun sudah bisa dengan tar dan sudah direvisi.
 
 
 ### 4. Task 4 - LDR Isabel (Isabel Sad Relationship)
