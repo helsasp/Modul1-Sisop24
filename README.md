@@ -491,16 +491,10 @@ B.Karena memory laptop Isabel penuh, maka bantulah Isabel untuk zip foto-foto te
 Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan NOMOR.ZIP adalah urutan folder saat dibuat (ayang_1, ayang_2, dst). Yang di ZIP hanyalah folder dari soal di atas. <br>
 #### Penyelesaian : <br>
 ```
-#4b
-if [ "$curr_jam" == "00" ]; then
-    zip -r "ayang_$num_photos.zip" "$folder_name"
-    ((folder_number++))
-fi
 ```
 
 #### Penjelasan :
-1. ```$curr_jam" == "00"``` sesuai dengan penjelasan diatas curr_jam adalah waktu dalam menit ketika script dijalankan. Soal meminta setiap 1 jam maka akan melakukan zipping maka jika curr_jam menunjukkan 00 atau dalam arti menit sudah menujukkan 00 maka sudah kelipatan 1 jam maka condition if akan dijalankan.<br>
-2. ```zip -r "ayang_$num_photos.zip" "$folder_name" fi``` Disini akan melakukan zipping, dimana file yang di zip dari soal diatas dinamai dengan format ayang_index. Dengan index sesuai urutan folder saat dibuat yaitu si num_photos.Kemudian proses if selesai.<br>
+
 
 C.Ternyata laptop Isabel masih penuh, bantulah dia untuk delete semua folder dan zip setiap hari pada pukul 02.00!
 #### Penyelesaian : <br>
