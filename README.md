@@ -66,6 +66,70 @@ A. <br>
 ![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30) <br>
 #### Kendala :
 
+B. Komandan PKM juga tertarik ingin tahu antusiasme dan partisipasi mahasiswa sehingga meminta Bubu menampilkan bidang paling banyak diminati oleh mahasiswa. Tampilkan nama skema saja.
+
+#### Penyelesaian :
+ Membuat dan menjalankan file pkm-b.sh dengan cara :<br>
+ ```
+   nano pkm-b.sh
+```
+```
+chmod +x pkm-b.sh
+```
+```
+./pkm-b.sh
+```
+Input :<br>
+ ```
+   #!/bin/bash
+
+input_file="DataPKM.tsv"
+
+if [ ! -f "$input_file" ]; then
+    echo "File $input_file tidak ditemukan."
+    exit 1
+fi
+
+most_popular_scheme=$(awk -F '\t' 'NR>1 {
+    if (NF == 7) {
+        count[$7]++;
+    }
+}
+END {
+    max = 0;
+    popular = "";
+    for (item in count) {
+        if (count[item] > max) {
+            max = count[item];
+            popular = item;
+        }
+    }
+    print popular;
+}' "$input_file")
+
+echo "Bidang skema paling banyak diminati oleh mahasiswa adalah: $most_popular_scheme"
+```
+Penjelasan :<br>
+1. ```input_file="DataPKM.tsv"```: Mendefinisikan variabel input_file yang berisi nama file TSV yang akan diolah.
+
+2.``` if [ ! -f "$input_file" ]; then ... fi```: Kondisional bash yang memeriksa apakah file yang disebut dalam variabel input_file ada atau tidak. Jika tidak ditemukan, maka skrip akan mencetak pesan kesalahan dan keluar dengan status keluar 1 (exit 1).
+
+3.``` most_popular_scheme=$(awk -F '\t' 'NR>1 ' "$input_file")```: Ini adalah perintah untuk menjalankan AWK pada file DataPKM.tsv. AWK akan menghitung skema paling populer yang diminati oleh mahasiswa.
+
+4.``` 'NR>1 { ... }'```: Ini adalah pola AWK yang mengeksekusi kode di dalam kurung kurawal pada setiap baris, kecuali baris pertama.
+
+5.``` if (NF == 7) { count[$7]++; }```: Ini adalah kondisi AWK yang memeriksa apakah jumlah field dalam baris tersebut sama dengan 7. Jika ya, maka nilai dalam field ke-7 dihitung sebagai skema yang diminati.
+
+6. ```END  max = 0; popular = "";```: Bagian ini dari AWK dieksekusi setelah selesai membaca seluruh baris dalam file. Di sini, dilakukan perhitungan skema yang paling banyak diminati.
+
+7. ```for (item in count)```: Loop untuk setiap skema yang terhitung.
+
+8. ```if (count[item] > max) ```: Kondisi untuk memeriksa apakah jumlah pemakaian skema saat ini lebih besar dari skema sebelumnya. Jika ya, skema saat ini dianggap sebagai skema paling populer.
+
+9. ```echo "Bidang skema paling banyak diminati oleh mahasiswa adalah: $most_popular_scheme"```: Ini adalah perintah untuk mencetak hasil skema paling populer yang telah dihitung oleh AWK.
+
+#### Hasil : 
+
 ### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
 A. Yuan ingin membuat file bash login bernama yu_login.sh untuk memastikan bahwa peserta yang telah ada di dalam file .csv tersebut, dapat langsung melakukan login, tanpa perlu register. Apabila loginnya sukses, maka akan masuk ke log.txt erikut format untuk login:
     Memasukkan username. Username didapatkan dari kata pertama pada kolom nama_pengusul<br>
