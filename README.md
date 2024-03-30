@@ -64,7 +64,7 @@ awk -F'\t' 'NR > 1 && NF {
 #### Hasil :
 A. <br>
 ![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30) <br>
-#### Kendala :
+#### Kendala : Awalnya hasil yang keluar tidak sesuai dengan perintah soal
 
 B. Komandan PKM juga tertarik ingin tahu antusiasme dan partisipasi mahasiswa sehingga meminta Bubu menampilkan bidang paling banyak diminati oleh mahasiswa. Tampilkan nama skema saja.
 #### Penyelesaian :
@@ -131,7 +131,7 @@ Penjelasan :<br>
 #### Hasil : 
 A. <br>
 ![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-29%20at%2023.56.29.png) <br>
-#### Kendala :
+#### Kendala : Awalnya hasil kode tidak keluar sesuai dengan perintah soal dan ada kode yang line nya error
 
 C. Karena ada aturan baru dimana 1 mahasiswa hanya boleh submit 1 proposal, maka komandan juga meminta Bubu untuk memberikan list mahasiswa yang mengajukan 2 proposal. Tampilkan data pembimbingnya karena ingin di kontak komandan.
 #### Penyelesaian :
@@ -199,7 +199,7 @@ Penjelasan :<br>
 #### Hasil : 
 A. <br>
 ![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-30%20at%2016.22.36.png) <br>
-#### Kendala :
+#### Kendala : Nama Pembimbing yang keluar hanya berjumlah satu
 
 ### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
 A. Yuan ingin membuat file bash login bernama yu_login.sh untuk memastikan bahwa peserta yang telah ada di dalam file .csv tersebut, dapat langsung melakukan login, tanpa perlu register. Apabila loginnya sukses, maka akan masuk ke log.txt erikut format untuk login:
@@ -393,6 +393,7 @@ Penjelasan : <br>
 
    b. Kemudian, menggunakan read_input untuk membaca input dari pengguna
 
+#### Kendala : Data yang masuk tidak terpisahkan oleh koma
 C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:<br>
 File users.txt akan diupdate setiap 1 jam sekali<br>
 Simpan konfigurasi cron pada file crontabs<br>
