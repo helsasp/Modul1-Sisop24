@@ -836,7 +836,7 @@ c. Melakukan iterasi sebanyak num untuk mengunduh foto-foto dengan menggunakan p
 
 #### Hasil : 
 A. <br>
-![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-30%20at%2016.22.36.png) <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-30%20at%2016.29.34.png) <br>
 #### Kendala :
 
 B.Karena memory laptop Isabel penuh, maka bantulah Isabel untuk zip foto-foto tersebut dengan ketentuan:<br>
