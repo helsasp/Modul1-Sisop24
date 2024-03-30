@@ -1,5 +1,5 @@
-#zipping setiap 1 jam
-0 * * * * /home/liares/isabel.sh
+#4c - > delete all file and folder
+0 2 * * * bash -c 'rm -rf folder_* ayang_*.zip'
 
 #4d -> Script untuk menjalankan tiap hari
 0 0 * * * /home/helsasp/isabel.sh
