@@ -846,11 +846,17 @@ B.Karena memory laptop Isabel penuh, maka bantulah Isabel untuk zip foto-foto te
 Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan NOMOR.ZIP adalah urutan folder saat dibuat (ayang_1, ayang_2, dst). Yang di ZIP hanyalah folder dari soal di atas. <br>
 #### Penyelesaian : <br>
 ```
-
+#4b
+while true;do
+    zip -r "ayang_$idx.zip" "$folder_name"
+    sleep 1h
+done
 ```
 
-#### Penjelasan :
-
+#### Penjelasan :<br>
+1.```while true;do if [ "$curr_jam" != "00" ]; then```pertama cek dalam while apakah jam sekarang jam 00.00<br>
+2.```zip -r "ayang_$idx.zip" "$folder_name"```jika tidak maka zip file dengan format nama ayang_$idx.zip<br>
+3.```sleep 1h done```untuk pengulangan dilakukan setiap 1 jam sekali dari file di run.
 
 C.Ternyata laptop Isabel masih penuh, bantulah dia untuk delete semua folder dan zip setiap hari pada pukul 02.00!
 #### Penyelesaian : <br>
