@@ -559,6 +559,7 @@ B.Karena memory laptop Isabel penuh, maka bantulah Isabel untuk zip foto-foto te
 Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan NOMOR.ZIP adalah urutan folder saat dibuat (ayang_1, ayang_2, dst). Yang di ZIP hanyalah folder dari soal di atas. <br>
 #### Penyelesaian : <br>
 ```
+
 ```
 
 #### Penjelasan :
@@ -567,11 +568,13 @@ Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan N
 C.Ternyata laptop Isabel masih penuh, bantulah dia untuk delete semua folder dan zip setiap hari pada pukul 02.00!
 #### Penyelesaian : <br>
 ```
+0 2 * * * bash -c 'rm -rf folder_* ayang_*.zip'
 ```
 
 #### Penjelasan : <br>
-1.```$curr_jam" == "02"```karena soal minta untuk delete semua folder dan zip pada pukul 02.00 maka kita cek curr_jam apakah pukul 2.<br>
-2.```rm -rf folder_* ayang_*.zip``` jika iya maka akan di delete semua folder yang nama awalnya sama dengan "folder_" dan menghapus semua file yang dimulai dengan "ayang_" dan berakhiran dengan ".zip".<br>
+1.```0 2 * * *```karena soal minta untuk delete semua folder dan zip pada cronjob kita set jam  0 2.<br>
+2.```bash -c``` untuk execute command yang akan kita jalanin. <br>
+3.```'rm -rf folder_* ayang_*.zip'```command yang akan ngedelete semua file dengan format nama awal folder_ dan ayang_.zip.
 
 D. Untuk mengisi laptopnya kembali, Isabel ingin mendownload gambar Levi dan Eren secara bergantian setiap harinya dengan ketentuan nama file:<br>
     Jika Levi, maka nama file nya menjadi levi_YYYYMMDD (Dengan YYYYMMDD adalah tahun, bulan, dan tanggal gambar tersebut di download)<br>
