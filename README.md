@@ -392,10 +392,6 @@ Penjelasan : <br>
    a. Pertama, deklarasi array proposal_data.
 
    b. Kemudian, menggunakan read_input untuk membaca input dari pengguna
-#### Hasil : 
-A. <br>
-![Screenshot 2024-03-28 163049]() <br>
-#### Kendala :
 
 C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:<br>
 File users.txt akan diupdate setiap 1 jam sekali<br>
@@ -451,6 +447,13 @@ A.<br>
 <br>
 ![Screenshot 2024-03-28 163857](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/3fde77f5-425f-427b-b7e6-706ba0eeff54)<br>
 <br>
+
+B.<br>
+![Screenshot 2024-03-28 163049]() <br>
+![Screenshot from 2024-03-30 18-17-04](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/104217128/7c2611df-6845-4402-bca7-b119ecc10bee)<br>
+![Screenshot from 2024-03-30 18-18-41](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/104217128/fbff95c5-6b61-4d6f-9e8d-d63b94438fff)<br>
+![Screenshot from 2024-03-30 18-18-55](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/104217128/77e4ff95-5022-4b12-9ceb-59e7fa741068)<br>
+
 C.<br>
 ![Screenshot from 2024-03-30 11-52-54](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/104217128/e1ce5794-7a84-4621-aa4d-403973b99514)<br>
 <br>
