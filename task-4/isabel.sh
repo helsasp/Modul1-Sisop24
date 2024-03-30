@@ -34,9 +34,12 @@ download_photos "$folder_name" "$num_photos"
 echo "Photos downloaded successfully :)"
 
 #4b
+while true;do
 if [ "$curr_jam" != "00" ]; then
-    zip -r "ayang_$num_photos.zip" "$folder_name"
+    zip -r "ayang_$idx.zip" "$folder_name"
 fi
+    sleep 1h
+done
 
 #4D
 download_fotonya_levi() {
