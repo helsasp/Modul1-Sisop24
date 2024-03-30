@@ -198,7 +198,7 @@ Penjelasan :<br>
 
 #### Hasil : 
 A. <br>
-![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30) <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-30%20at%2016.22.36.png) <br>
 #### Kendala :
 
 ### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
@@ -392,7 +392,10 @@ Penjelasan : <br>
    a. Pertama, deklarasi array proposal_data.
 
    b. Kemudian, menggunakan read_input untuk membaca input dari pengguna
-#### Hasil :
+#### Hasil : 
+A. <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-30%20at%2016.22.36.png) <br>
+#### Kendala :
 
 C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:<br>
 File users.txt akan diupdate setiap 1 jam sekali<br>
@@ -831,7 +834,10 @@ c. Melakukan iterasi sebanyak num untuk mengunduh foto-foto dengan menggunakan p
 
 8.```echo "Photos downloaded successfully :)"```: Mencetak pesan bahwa unduhan foto berhasil.
 
-#### Hasil :
+#### Hasil : 
+A. <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-30%20at%2016.22.36.png) <br>
+#### Kendala :
 
 B.Karena memory laptop Isabel penuh, maka bantulah Isabel untuk zip foto-foto tersebut dengan ketentuan:<br>
 Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan NOMOR.ZIP adalah urutan folder saat dibuat (ayang_1, ayang_2, dst). Yang di ZIP hanyalah folder dari soal di atas. <br>
