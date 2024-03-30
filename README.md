@@ -254,6 +254,10 @@ A.<br>
 ![Screenshot 2024-03-28 163721](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/20de0483-dda3-4e94-93b2-219e270322ae)<br>
 <br>
 ![Screenshot 2024-03-28 163857](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/3fde77f5-425f-427b-b7e6-706ba0eeff54)<br>
+<br>
+C.<br>
+![Screenshot from 2024-03-30 11-52-54](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/104217128/e1ce5794-7a84-4621-aa4d-403973b99514)<br>
+<br>
 #### Kendala : 
 Pada nomor 2A terdapat beberapa kata yang masih tidak bisa login padahal username dan password sudah benar.<br>
 
