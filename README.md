@@ -67,8 +67,8 @@ A. <br>
 #### Kendala :
 
 B. Komandan PKM juga tertarik ingin tahu antusiasme dan partisipasi mahasiswa sehingga meminta Bubu menampilkan bidang paling banyak diminati oleh mahasiswa. Tampilkan nama skema saja.
-
 #### Penyelesaian :
+
  Membuat dan menjalankan file pkm-b.sh dengan cara :<br>
  ```
    nano pkm-b.sh
@@ -110,7 +110,7 @@ END {
 echo "Bidang skema paling banyak diminati oleh mahasiswa adalah: $most_popular_scheme"
 ```
 Penjelasan :<br>
-1. ```input_file="DataPKM.tsv"```: Mendefinisikan variabel input_file yang berisi nama file TSV yang akan diolah.
+1.```input_file="DataPKM.tsv"```: Mendefinisikan variabel input_file yang berisi nama file TSV yang akan diolah.
 
 2.``` if [ ! -f "$input_file" ]; then ... fi```: Kondisional bash yang memeriksa apakah file yang disebut dalam variabel input_file ada atau tidak. Jika tidak ditemukan, maka skrip akan mencetak pesan kesalahan dan keluar dengan status keluar 1 (exit 1).
 
@@ -120,15 +120,86 @@ Penjelasan :<br>
 
 5.``` if (NF == 7) { count[$7]++; }```: Ini adalah kondisi AWK yang memeriksa apakah jumlah field dalam baris tersebut sama dengan 7. Jika ya, maka nilai dalam field ke-7 dihitung sebagai skema yang diminati.
 
-6. ```END  max = 0; popular = "";```: Bagian ini dari AWK dieksekusi setelah selesai membaca seluruh baris dalam file. Di sini, dilakukan perhitungan skema yang paling banyak diminati.
+6.```END  max = 0; popular = "";```: Bagian ini dari AWK dieksekusi setelah selesai membaca seluruh baris dalam file. Di sini, dilakukan perhitungan skema yang paling banyak diminati.
 
-7. ```for (item in count)```: Loop untuk setiap skema yang terhitung.
+7.```for (item in count)```: Loop untuk setiap skema yang terhitung.
 
-8. ```if (count[item] > max) ```: Kondisi untuk memeriksa apakah jumlah pemakaian skema saat ini lebih besar dari skema sebelumnya. Jika ya, skema saat ini dianggap sebagai skema paling populer.
+8.```if (count[item] > max) ```: Kondisi untuk memeriksa apakah jumlah pemakaian skema saat ini lebih besar dari skema sebelumnya. Jika ya, skema saat ini dianggap sebagai skema paling populer.
 
-9. ```echo "Bidang skema paling banyak diminati oleh mahasiswa adalah: $most_popular_scheme"```: Ini adalah perintah untuk mencetak hasil skema paling populer yang telah dihitung oleh AWK.
+9.```echo "Bidang skema paling banyak diminati oleh mahasiswa adalah: $most_popular_scheme"```: Ini adalah perintah untuk mencetak hasil skema paling populer yang telah dihitung oleh AWK.
 
 #### Hasil : 
+A. <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30) <br>
+#### Kendala :
+
+C. Karena ada aturan baru dimana 1 mahasiswa hanya boleh submit 1 proposal, maka komandan juga meminta Bubu untuk memberikan list mahasiswa yang mengajukan 2 proposal. Tampilkan data pembimbingnya karena ingin di kontak komandan.
+#### Penyelesaian :
+
+ Membuat dan menjalankan file pkm-c.sh dengan cara :<br>
+ ```
+   nano pkm-c.sh
+```
+```
+chmod +x pkm-c.sh
+```
+```
+./pkm-c.sh
+```
+Input :<br>
+ ```
+  #!/bin/bash
+
+awk -F '\t' '
+NR>1 && NF==7 {
+    gsub("_", " ", $2);
+    proposal_count[$2]++;
+    if (proposal_count[$2] == 2) {
+        pengusul[$2] = $2;
+        pembimbing[$2] = $6;
+    } else if (proposal_count[$2] > 2) {
+        delete pengusul[$2];
+    }
+}
+END {
+    for (pengusul_name in proposal_count) {
+        if (proposal_count[pengusul_name] > 1) {
+            print "Nama Pengusul:", pengusul_name, "Pembimbing:", pembimbing[pengusul_name];
+        }
+    }
+}' DataPKM.tsv
+```
+Penjelasan :<br>
+1.``` awk -F '\t' '```: Ini memulai perintah awk dan mengatur field separator (pemisah kolom) menjadi tab (\t).
+
+2.```NR>1 && NF==7 {```: Awk akan menjalankan blok kode yang berada di dalam kurung kurawal ini untuk setiap baris yang memenuhi kondisi bahwa nomor baris (NR) lebih besar dari 1 (artinya tidak termasuk baris header) dan jumlah field (NF) sama dengan 7 (artinya ada 7 kolom pada baris tersebut).
+
+3.```gsub("_", " ", $2);```: Ini mengganti semua underscore (_) dengan spasi pada kolom kedua.
+
+4.``` proposal_count[$2]++;```: Ini menghitung jumlah proposal untuk setiap pengusul. Array proposal_count digunakan untuk menyimpan jumlah proposal untuk setiap nama pengusul.
+
+5.```if (proposal_count[$2] == 2) {```: Jika jumlah proposal untuk pengusul tertentu sama dengan 2, maka jalankan blok kode di bawahnya.
+
+6.```pengusul[$2] = $2;```: Ini menyimpan nama pengusul ke dalam array pengusul.
+
+7.``` pembimbing[$2] = $6;```: Ini menyimpan nama pembimbing ke dalam array pembimbing untuk pengusul yang memiliki dua proposal.
+
+8.```} else if (proposal_count[$2] > 2) {```: Jika jumlah proposal untuk pengusul tertentu lebih dari 2, maka hapus data pengusul tersebut dari array pengusul.
+
+9.``` delete pengusul[$2];```: Ini menghapus data pengusul dari array pengusul.
+
+10.``` END {```: Awk akan menjalankan blok kode yang berada di dalam kurung kurawal ini setelah selesai membaca seluruh baris pada file.
+
+11.```for (pengusul_name in proposal_count) {```: Awk akan melakukan iterasi untuk setiap nama pengusul yang terdapat dalam array proposal_count.
+
+12.```if (proposal_count[pengusul_name] > 1) {```: Jika jumlah proposal untuk pengusul tertentu lebih dari 1, maka jalankan blok kode di bawahnya.
+
+13.```print "Nama Pengusul:", pengusul_name, "Pembimbing:", pembimbing[pengusul_name];```: Ini mencetak nama pengusul beserta nama pembimbingnya jika pengusul tersebut memiliki lebih dari satu proposal.
+
+#### Hasil : 
+A. <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30) <br>
+#### Kendala :
 
 ### 2. Task 2 - Gabut Yuan (Yuan's Boredom)
 A. Yuan ingin membuat file bash login bernama yu_login.sh untuk memastikan bahwa peserta yang telah ada di dalam file .csv tersebut, dapat langsung melakukan login, tanpa perlu register. Apabila loginnya sukses, maka akan masuk ke log.txt erikut format untuk login:
@@ -200,6 +271,129 @@ read -p "Masukkan Password -> " pw``` : memasukkan username dan password user da
 8.```echo "Login berhasil!" dan echo "Login salah."``` : mencetak pesan ke layar sesuai dengan hasil login.<br>
 9.```echo "$waktuLogin LOGIN: SUCCESS $uname is logged in" >> log.txt dan echo "$waktuLogin LOGIN: ERROR Failed login attempt on $uname" >> log.txt```: mencatat hasil login ke dalam file log.txt beserta waktu dan status loginnya.<br>
 
+B. Yuan juga ingin membuat file bash register bernama yu_register.sh untuk handle peserta baru yang ingin upload proposal. Data baru ini akan langsung disimpan dalam file .csv tersebut. 
+   Ketentuannya adalah:
+   Memasukkan nama_pengusul, asal departemen, fakultas, judul proposal, dosen pendamping (nidn), skema pkm. (Sesuaikan dengan file .csv)
+   Setiap percobaan register akan tercatat pada log.txt dengan format YY/MM/DD hh:mm:ss MESSAGE
+   Dengan MESSAGE berupa:
+   REGISTER: SUCCESS USER_NAME is registered. Proposal PROPOSAL_NUMBER is added
+   Atau
+   REGISTER: ERROR USER_NAME is already existed
+
+#### Penyelesaian :
+Membuat dan menjalankan file yu_register.sh dengan cara :<br>
+```
+nano yu_register.sh
+```
+```
+chmod +x yu_register.sh
+```
+```
+./yu_register.sh
+```
+Input :
+```
+#!/bin/bash
+
+csv_file="data-pkm.csv"
+log_file="log.txt"
+
+log_message() {
+    echo "$(date '+%y/%m/%d %H:%M:%S') $1" >> "$log_file"
+}
+
+register() {
+    local data=("$@")  # Menyimpan argumen dalam array data
+    local nama_pengusul="${data[0]}"
+    local asal_departemen="${data[1]}"
+    local fakultas="${data[2]}"
+    local judul="${data[3]}"
+    local pendamping="${data[4]}"
+    local skema="${data[5]}"
+
+    # Membersihkan input dari koma
+    for i in {0..5}; do
+        data[$i]=$(echo "${data[$i]}" | sed 's/,/\\,/g')
+    done
+
+    if grep -q "^.*${nama_pengusul}.*" "$csv_file"; then
+        log_message "REGISTER: ERROR $nama_pengusul is already existed"
+        echo "Error: User already exists."
+        return 1
+    fi
+
+    # Menentukan nomor proposal
+    if [[ -z "${data[6]}" || ! "${data[6]}" =~ ^[0-9]+$ ]]; then
+        local last_number=$(tail -1 "$csv_file" | cut -d ',' -f1)
+        data[6]=$((last_number + 1))
+    fi
+
+    # Menyimpan data proposal ke dalam file CSV
+    echo "${data[*]}" | sed 's/\\,/,/g' >> "$csv_file"
+    log_message "REGISTER: SUCCESS ${nama_pengusul} is registered. Proposal ${data[6]} is added"
+
+    echo "Registration successful."
+    return 0
+}
+
+read_input() {
+    local prompt=$1
+    local variable_name=$2
+    read -p "$prompt: " "$variable_name"
+}
+
+main() {
+    declare -a proposal_data
+
+    read_input "Masukkan nama_pengusul" nama_pengusul
+    read_input "Masukkan asal_departemen" asal_departemen
+    read_input "Masukkan fakultas" fakultas
+    read_input "Masukkan judul" judul
+    read_input "Masukkan pendamping (ID)" pendamping
+    read_input "Masukkan skema" skema
+
+    # Menyimpan data input ke dalam array proposal_data
+    proposal_data=("$nama_pengusul" "$asal_departemen" "$fakultas" "$judul" "$pendamping" "$skema")
+
+    register "${proposal_data[@]}"
+}
+
+main "$@"
+```
+Penjelasan : <br>
+1. ```csv_file="data-pkm.csv"```: Variabel csv_file menyimpan nama file CSV yang akan digunakan untuk menyimpan data proposal.
+
+2.```log_file="log.txt"```: Variabel log_file menyimpan nama file log yang akan digunakan untuk mencatat pesan log.
+
+3.```log_message()```: Ini adalah sebuah fungsi yang akan mencetak pesan log ke dalam file log dengan format tanggal dan waktu yang ditambahkan di depan pesan.
+
+4.``` register()```: Ini adalah fungsi utama yang bertanggung jawab untuk mendaftarkan proposal penelitian.
+
+   a.``` local data=("$@")```: Variabel lokal data menyimpan semua argumen yang diterima oleh fungsi ini dalam bentuk array.
+
+   b. ```local nama_pengusul="${data[0]}", local asal_departemen="${data[1]}", dst.```: Variabel lokal ini menyimpan nilai dari array data ke dalam variabel-variabel lokal sesuai dengan posisi mereka dalam array.
+
+   c.```Loop for```digunakan untuk membersihkan input dari koma (,) dengan mengubahnya menjadi \\, agar tidak terbaca sebagai pemisah dalam file CSV.
+
+   d.``` if grep -q "^.*${nama_pengusul}.*" "$csv_file"; then```: Ini menggunakan grep untuk memeriksa apakah nama pengusul sudah ada dalam file CSV.
+
+   e. Jika nama pengusul sudah ada, maka fungsi akan mencetak pesan log bahwa registrasi gagal dan mengembalikan nilai 1. Jika tidak, maka proses registrasi akan dilanjutkan.
+
+   f. Bagian selanjutnya menentukan nomor proposal dengan mengambil nomor terakhir dari file CSV dan menambahkannya dengan 1.
+
+   g. Kemudian data proposal akan disimpan ke dalam file CSV dengan menggunakan perintah echo dan sed untuk mengubah kembali tanda \\, menjadi ,.
+
+   h. Terakhir, fungsi ini mencetak pesan log bahwa registrasi berhasil dan mengembalikan nilai 0.
+
+6. ```read_input()```: Ini adalah fungsi kecil yang digunakan untuk membaca input dari pengguna dan menyimpannya ke dalam variabel yang disebutkan.
+
+7.``` main()```: Fungsi utama dari skrip ini.
+
+   a. Pertama, deklarasi array proposal_data.
+
+   b. Kemudian, menggunakan read_input untuk membaca input dari pengguna
+#### Hasil :
+
 C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:<br>
 File users.txt akan diupdate setiap 1 jam sekali<br>
 Simpan konfigurasi cron pada file crontabs<br>
@@ -221,7 +415,6 @@ Untuk pengaturan crontabs dengan cara :<br>
 ```
 crontabs -e
 ```
-#### Input : <br>
 ```
 #!/bin/bash
 
@@ -555,6 +748,91 @@ Pada no 3D awalnya tidak bisa mengompress beberapa file menjadi 1, namun sudah b
 
 
 ### 4. Task 4 - LDR Isabel (Isabel Sad Relationship)
+A. Isabel sedang LDR dengan pacarnya dan sangat rindu. Isabel ingin menyimpan semua foto-foto yang dikirim oleh pacarnya. Bantulah Isabel menyimpan gambar "Mingyu Seventeen”.
+Berikut adalah ketentuan yang diinginkan Isabel:
+   Gambarnya di download setiap 5 jam sekali mulai dari saat script dijalankan dan memperhatikan waktu sekarang. Jika waktu genap, maka simpan foto sebanyak 5x. Jika waktu ganjil, maka simpan foto sebanyak 3x. (Contoh : pukul sekarang 12.38, maka pukul 12 adalah genap     sehingga simpan foto sebanyak 5x).
+   Jika pukul menunjukkan 00.00, maka simpan foto sebanyak 10x.
+   File yang didownload memiliki format nama foto_NOMOR.FILE dengan NOMOR.FILE adalah urutan file yang download (foto_1, foto_2, dst)
+   File batch yang didownload akan dimasukkan ke dalam folder dengan format nama folder_NOMOR.FOLDER dengan NOMOR.FOLDER adalah urutan folder saat dibuat (folder_1, folder_2, dst)
+
+#### Penyelesaian :
+Membuat dan menjalankan file isabel.sh dengan cara :<br>
+```
+nano isabel.sh
+```
+```
+chmod +x isabel.sh
+```
+```
+./isabel.sh
+```
+Input : <br>
+```
+ #!/bin/bash
+
+curr_jam=$(date +"%H")
+
+get_num_photos() {
+    if [ "$1" == "00" ]; then
+        echo 10
+    elif [ $((curr_jam % 2)) -eq 0 ]; then
+        echo 5
+    else
+        echo 3
+    fi
+}
+
+num_photos=$(get_num_photos "$curr_jam")
+idx=0;
+folder_name="folder_$((++idx))" 
+
+download_photos() {
+    local folder=$1
+    local num=$2
+
+    for ((i=1; i<=num; i++)); do
+        filename="foto_${i}.jpg"
+        wget -O "${folder}/${filename}" "https://hobihepi.com/wp-content/uploads/2024/01/Profil-Mingyu-SEVENTEEN-Terbaru.png"
+    done
+}
+
+mkdir "$folder_name"
+
+download_photos "$folder_name" "$num_photos"
+
+echo "Photos downloaded successfully :)"
+```
+Penjelasan :<br>
+1.``` curr_jam=$(date +"%H")```: Variabel curr_jam menyimpan jam saat ini dalam format 24 jam.
+
+2. ```get_num_photos()```: Fungsi ini digunakan untuk mengembalikan jumlah foto yang akan diunduh berdasarkan jam saat ini.
+
+   a. Jika jam saat ini adalah pukul 00:00, maka akan mengembalikan angka 10.
+
+   b. Jika jam saat ini merupakan angka genap, maka akan mengembalikan angka 5.
+
+   c. Jika jam saat ini bukan angka genap, maka akan mengembalikan angka 3.
+
+3. ```num_photos=$(get_num_photos "$curr_jam")```: Menggunakan fungsi get_num_photos untuk mendapatkan jumlah foto yang harus diunduh berdasarkan jam saat ini.
+
+4.``` idx=0; folder_name="folder_$((++idx))"```: Menginisialisasi variabel idx dengan 0 dan membuat nama folder baru berdasarkan nilai dari idx.
+
+5.``` download_photos()```: Fungsi ini digunakan untuk mengunduh foto-foto ke dalam folder yang telah dibuat.
+
+   a. Parameter folder menyimpan nama folder tempat foto-foto akan disimpan.
+
+   b. Parameter num menyimpan jumlah foto yang akan diunduh.
+
+c. Melakukan iterasi sebanyak num untuk mengunduh foto-foto dengan menggunakan perintah wget.
+
+6. ```mkdir "$folder_name"```: Membuat folder baru dengan nama yang telah ditentukan sebelumnya.
+
+7. ```download_photos "$folder_name" "$num_photos"```: Memanggil fungsi download_photos dengan argumen nama folder dan jumlah foto yang akan diunduh.
+
+8.```echo "Photos downloaded successfully :)"```: Mencetak pesan bahwa unduhan foto berhasil.
+
+#### Hasil :
+
 B.Karena memory laptop Isabel penuh, maka bantulah Isabel untuk zip foto-foto tersebut dengan ketentuan:<br>
 Isabel harus melakukan zip setiap 1 jam dengan nama zip ayang_NOMOR.ZIP dengan NOMOR.ZIP adalah urutan folder saat dibuat (ayang_1, ayang_2, dst). Yang di ZIP hanyalah folder dari soal di atas. <br>
 #### Penyelesaian : <br>
