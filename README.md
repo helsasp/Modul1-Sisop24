@@ -394,7 +394,7 @@ Penjelasan : <br>
    b. Kemudian, menggunakan read_input untuk membaca input dari pengguna
 #### Hasil : 
 A. <br>
-![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-30%20at%2016.22.36.png) <br>
+![Screenshot 2024-03-28 163049]() <br>
 #### Kendala :
 
 C.Yuan tidak ingin capek. Dia membuat automasi di file bash bernama yu_database.sh untuk dapat membuat file users.txt guna menyimpan username dan password dari para peserta. Ketentuannya adalah:<br>
