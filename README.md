@@ -130,7 +130,7 @@ Penjelasan :<br>
 
 #### Hasil : 
 A. <br>
-![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/assets/144691463/7b7f4296-68b9-4682-9195-f63f3d399f30) <br>
+![Screenshot 2024-03-28 163049](https://github.com/sisop-its-s24/praktikum-modul-1-d21/blob/main/resources/Screen%20Shot%202024-03-29%20at%2023.56.29.png) <br>
 #### Kendala :
 
 C. Karena ada aturan baru dimana 1 mahasiswa hanya boleh submit 1 proposal, maka komandan juga meminta Bubu untuk memberikan list mahasiswa yang mengajukan 2 proposal. Tampilkan data pembimbingnya karena ingin di kontak komandan.
