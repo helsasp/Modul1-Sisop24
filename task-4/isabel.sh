@@ -14,8 +14,8 @@ get_num_photos() {
 }
 
 num_photos=$(get_num_photos "$curr_jam")
-
-folder_name="folder_$(date +"%s")"
+idx=0;
+folder_name="folder_$((++idx))" 
 
 download_photos() {
     local folder=$1
@@ -34,13 +34,8 @@ download_photos "$folder_name" "$num_photos"
 echo "Photos downloaded successfully :)"
 
 #4b
-if [ "$curr_jam" == "00" ]; then
+if [ "$curr_jam" != "00" ]; then
     zip -r "ayang_$num_photos.zip" "$folder_name"
-fi
-
-#4c
-if [ "$curr_jam" == "02" ]; then
-    rm -rf folder_* ayang_*.zip
 fi
 
 #4D
